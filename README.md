@@ -4,11 +4,11 @@
 
 ### Features
 
-⚡️ Real-time chat
-👾 Themeable & customizable
-👮‍♂️ Authentication & Profile view
-🔥 Serverless back end
-🚀 Uses GraphQL
+⚡️ Real-time chat   
+👾 Themeable & customizable   
+👮‍♂️ Authentication & Profile view   
+🔥 Serverless back end   
+🚀 Uses GraphQL   
 
 ## To deploy this app
 
