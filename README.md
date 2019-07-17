@@ -1,5 +1,7 @@
 # Conference App in a Box
 
+#### Deploy a full stack & cross-platform mobile app for your next event in minutes.
+
 🛠 Built with React Native, GraphQL, AWS Amplify, & AWS AppSync
 
 ### Features
@@ -8,7 +10,7 @@
 👾 Themeable & customizable   
 👮‍♂️ Authentication & Profile view   
 🔥 Serverless back end   
-🚀 Uses GraphQL   
+🚀 GraphQL   
 
 ![](./src/assets/confapps1.jpg)
 ![](./src/assets/confapps2.jpg)
