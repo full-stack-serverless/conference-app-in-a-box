@@ -14,9 +14,7 @@ export default class Profile extends Component {
     isEditing: false
   }
   async componentDidMount() {
-    console.log('props:', this.props)
     const user = await Auth.currentAuthenticatedUser()
-    console.log('user:', user)
     const { signInUserSession: { idToken: { payload }}} = user
     this.setState({
       username: user.username,

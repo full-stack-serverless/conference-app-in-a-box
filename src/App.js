@@ -14,10 +14,7 @@ const TabNavigator = createBottomTabNavigator({
     screen: Schedule
   },
   Profile: {
-    screen: (props) => {
-      console.log('props from profile tab:', props)
-      return <Profile {...props} />
-    }
+    screen: Profile
   },
   Map: {
     screen: Map,
