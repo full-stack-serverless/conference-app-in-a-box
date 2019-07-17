@@ -8,7 +8,7 @@ import BaseHeader from './BaseHeader'
 export default class Map extends Component {
   openMap = () => {
     Linking.openURL('https://goo.gl/maps/DNrmyCTQPDC5RkHc9')
-    .catch((err) => console.error('An error occurred', err));
+      .catch((err) => console.error('An error occurred', err));
   }
   render() {
     return (
