@@ -10,6 +10,10 @@
 🔥 Serverless back end   
 🚀 Uses GraphQL   
 
+![](./src/assets/confapps1.jpg)
+![](./src/assets/confapps2.jpg)
+![](./src/assets/confapps3.jpg)
+
 ## To deploy this app
 
 1. Clone the repo & install the dependencies
