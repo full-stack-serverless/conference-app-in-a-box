@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {TouchableHighlight, TextInput, StyleSheet, Text, View} from 'react-native';
 import { Auth } from 'aws-amplify'
-import { colors, typography, dimensions } from './theme'
 import Icon from 'react-native-vector-icons/Ionicons'
-
+import { colors, typography, dimensions } from './theme'
 import BaseHeader from './BaseHeader'
 
 export default class Profile extends Component {
@@ -15,6 +14,7 @@ export default class Profile extends Component {
     isEditing: false
   }
   async componentDidMount() {
+    console.log('props:', this.props)
     const user = await Auth.currentAuthenticatedUser()
     console.log('user:', user)
     const { signInUserSession: { idToken: { payload }}} = user
@@ -25,6 +25,15 @@ export default class Profile extends Component {
   }
   toggleForm = () => this.setState({ isEditing: !this.state.isEditing })
   onChange = (key, value) => this.setState({ [key]: value })
+  signOut = () => {
+    Auth.signOut()
+      .then(() => {
+         this.props.screenProps.onStateChange('signedOut', null);
+      })
+      .catch(err => {
+          console.log('err: ', err)
+      })
+  }
   render() {
     const buttonText = this.state.isEditing ? 'Save' : 'Edit Profile'
     return (
@@ -47,16 +56,28 @@ export default class Profile extends Component {
               />
             )
           }
-          <TouchableHighlight
-            onPress={this.toggleForm}
-            underlayColor='transparent'
-          >
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>
-                {buttonText}
-              </Text>
-            </View>
-          </TouchableHighlight>
+          <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              onPress={this.toggleForm}
+              underlayColor='transparent'
+            >
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>
+                  {buttonText}
+                </Text>
+              </View>
+            </TouchableHighlight>
+            <TouchableHighlight
+              onPress={this.signOut}
+              underlayColor='transparent'
+            >
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>
+                  Sign out
+                </Text>
+              </View>
+            </TouchableHighlight>
+          </View>
         </View>
       </View>
     );
@@ -86,28 +107,31 @@ const Social = ({ twitter, github}) => (
 
 const Form = ({ onChange, twitter, github }) => (
   <View>
-  <View>
-    <TextInput
-      onChangeText={value => onChange('twitter', value)}
-      style={styles.input}
-      value={twitter}
-      autoCapitalize='none'
-      autoCorrect={false}
-    />
+    <View>
+      <TextInput
+        onChangeText={value => onChange('twitter', value)}
+        style={styles.input}
+        value={twitter}
+        autoCapitalize='none'
+        autoCorrect={false}
+      />
+    </View>
+    <View>
+      <TextInput
+        onChangeText={value => onChange('github', value)}
+        style={styles.input}
+        value={github}
+        autoCapitalize='none'
+        autoCorrect={false}
+      />
+    </View>
   </View>
-  <View>
-    <TextInput
-      onChangeText={value => onChange('github', value)}
-      style={styles.input}
-      value={github}
-      autoCapitalize='none'
-      autoCorrect={false}
-    />
-  </View>
-</View>
 )
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row'
+  },
   button: {
     width: 110,
     borderWidth: 1,
@@ -116,7 +140,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 15,
-    marginLeft: -1
+    marginLeft: -1,
+    marginRight: 15
   },
   buttonText: {
     color: 'rgba(255, 255, 255, .85)',
@@ -166,6 +191,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
     fontFamily: typography.primar
-  },
-
+  }
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
 import { withAuthenticator } from 'aws-amplify-react-native'
@@ -9,12 +9,15 @@ import Map from './Map'
 
 import { colors } from './theme'
 
-const Tabs = createBottomTabNavigator({
+const TabNavigator = createBottomTabNavigator({
   Schedule: {
     screen: Schedule
   },
   Profile: {
-    screen: Profile,
+    screen: (props) => {
+      console.log('props from profile tab:', props)
+      return <Profile {...props} />
+    }
   },
   Map: {
     screen: Map,
@@ -41,6 +44,14 @@ const Tabs = createBottomTabNavigator({
   })
 })
 
-const App = createAppContainer(Tabs)
+class TabNavWithProps extends React.Component {
+  static router = TabNavigator.router;
+  render() {
+    return(<TabNavigator screenProps={{...this.props}} {...this.props}  />)
+  }
+}
 
-export default withAuthenticator(App)
+const Nav = withAuthenticator(TabNavWithProps)
+const App = createAppContainer(Nav)
+
+export default App
