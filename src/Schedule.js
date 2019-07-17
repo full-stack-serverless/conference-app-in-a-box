@@ -31,7 +31,6 @@ class Schedule extends Component {
   async componentDidMount() {
     try {
       const talkData = await API.graphql(graphqlOperation(listTalks))
-      console.log('talkData: ', talkData)
       this.setState({ talks: talkData.data.listTalks.items, loading: false })
     } catch (err) {
       console.log('err: ', err)
