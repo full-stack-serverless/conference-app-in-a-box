@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 10,
     bottom: 7,
-    width: 180,
-    height: 45
+    width: 120,
+    height: 35
   },
   title: {
     color: 'white',
