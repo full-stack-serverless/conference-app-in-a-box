@@ -42,6 +42,7 @@ buck-out/
 *.keystore
 
 #amplify
+amplify/team-provider-info.json
 amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/backend/amplify-meta.json
