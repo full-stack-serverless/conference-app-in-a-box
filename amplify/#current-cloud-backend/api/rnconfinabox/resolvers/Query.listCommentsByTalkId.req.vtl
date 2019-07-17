@@ -1,0 +1,11 @@
+{
+    "version" : "2017-02-28",
+    "operation" : "Query",
+    "index" : "gsi-TalkComments",
+    "query" : {
+        "expression": "talkId = :talkId",
+        "expressionValues" : {
+            ":talkId" : $util.dynamodb.toDynamoDBJson($ctx.args.talkId)
+        }
+    }
+}

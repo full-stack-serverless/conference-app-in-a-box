@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "rnconfinabox",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authrnconfinabox58de14db",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
