@@ -58,9 +58,9 @@ amplify console api
 
 3. Click on __Queries__ to open the GraphiQL Editor
 
-4. Create a new speaker with the following GraphQL mutation:
+4. Create a new talk with the following GraphQL mutation:
 
-```sh
+```graphql
 mutation createTalk {
   createTalk(input: {
     name: "Performance In React Native",
