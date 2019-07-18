@@ -21,7 +21,7 @@
 1. Clone the repo & install the dependencies
 
 ```sh
-git clone git@github.com:dabit3/conference-app-in-a-box.git
+git clone https://github.com/dabit3/conference-app-in-a-box.git
 
 cd conference-app-in-a-box
 
