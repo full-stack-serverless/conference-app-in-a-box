@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     marginTop: 15,
     fontWeight: '400',
-    color: 'white',
+    color: colors.primaryText,
     fontFamily: typography.primary,
   },
   name: {
@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginBottom: 20,
     marginTop: 20,
-    color: 'white',
     color: colors.highlight,
     fontFamily: typography.primary,
   },
@@ -58,21 +57,21 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontWeight: '500',
     fontSize: 16,
-    color: 'white',
+    color: colors.primaryText,
     fontFamily: typography.primary
   },
   time: {
-    color: 'rgba(255, 255, 255, .8)',
     color: colors.highlight,
     fontWeight: '500',
     fontFamily: typography.primary,
   },
   summary: {
-    color: 'white',
+    marginTop: 4,
+    color: colors.primaryText,
     fontFamily: typography.primary,
   },
   speakerBio: {
-    color: 'white'
+    color: colors.primaryText,
   }
 });
 

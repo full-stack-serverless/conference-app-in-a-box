@@ -18,7 +18,6 @@ class BaseHeader extends React.Component {
           resizeMode='contain'
           style={styles.logo}
         />
-        <Text style={styles.title}>{this.props.title}</Text>
       </View>
     )
   }
@@ -31,12 +30,6 @@ const styles = StyleSheet.create({
     bottom: 7,
     width: 120,
     height: 35
-  },
-  title: {
-    color: 'white',
-    fontFamily: 'Lato-Regular',
-    marginTop: 50,
-    fontSize: 16
   },
   container: {
     backgroundColor: colors.primary,

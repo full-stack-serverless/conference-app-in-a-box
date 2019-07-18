@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     marginRight: 15
   },
   buttonText: {
-    color: 'rgba(255, 255, 255, .85)',
+    color: colors.primaryText,
     marginTop: 3,
     fontFamily: typography.primary,
     fontSize: 13
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.highlight
   },
   twitterHandle: {
-    color: 'white',
+    color: colors.primaryText,
     fontFamily: typography.primary,
     fontSize: 18,
     marginLeft: 15
@@ -181,11 +181,11 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 26,
     marginBottom: 3,
-    color: 'white',
+    color: colors.primaryText,
     fontFamily: typography.primary,
   },
   email: {
-    color: 'white',
+    color: colors.primaryText,
     fontSize: 18,
     marginBottom: 10,
     fontFamily: typography.primar

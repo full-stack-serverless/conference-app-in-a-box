@@ -157,7 +157,8 @@ const styles = StyleSheet.create({
     width,
     backgroundColor: '#fff',
     paddingHorizontal: 8,
-    fontFamily: typography.primary
+    fontFamily: typography.primary,
+    fontSize: 16
   },
   container: {
     flex: 1,
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
   },
   message: {
     fontFamily: typography.primary,
-    color: 'white',
+    color: colors.primaryText,
     fontSize: 16
   },
   createdBy: {

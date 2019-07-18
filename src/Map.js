@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20
   },
   address: {
-    color: 'white',
+    color: colors.primaryText,
     fontSize: 18,
     marginBottom: 4,
     fontFamily: typography.primary
@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
   addressHeading: {
     fontSize: 18,
     fontWeight: '500',
-    marginBottom: 5
+    marginBottom: 5,
+    color: colors.highlight
   },
   container: {
     flex: 1,

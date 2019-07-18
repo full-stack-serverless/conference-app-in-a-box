@@ -194,13 +194,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     backgroundColor: colors.primaryDark
   },
-  timeHeading: {
-    fontWeight: "bold",
-    color: 'white',
-    fontFamily: typography.primary,
-  },
   talkTime: {
-    color: 'white',
+    color: colors.primaryText,
     fontFamily: typography.primary,
   },
   infoContainer: {
@@ -212,7 +207,7 @@ const styles = StyleSheet.create({
     fontFamily: typography.primary,
     fontSize: 17,
     marginBottom: 5,
-    color: 'white'
+    color: colors.primaryText,
   },
   avatarContainer: {
     flex: 2,
@@ -227,7 +222,7 @@ const styles = StyleSheet.create({
   },
   speakerName: {
     fontSize: 14,
-    color: 'rgba(255, 255, 255, .8)',
+    color: colors.primaryText,
     fontFamily: typography.primary,
   }
 });

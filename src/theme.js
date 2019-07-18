@@ -7,6 +7,8 @@ const primary = 'rgba(18, 25, 50, 1)'
 const primary2 = 'rgba(27, 37, 77, 1)'
 const primaryOpaque = opacity => `rgba(18, 25, 50, ${opacity})`
 
+const primaryText = 'white'
+
 const highlight = '#61dafb'
 
 const colors = {
@@ -14,7 +16,8 @@ const colors = {
   highlight,
   primary2,
   primaryDark,
-  primaryOpaque
+  primaryOpaque,
+  primaryText
 }
 
 const typography = {
@@ -25,7 +28,7 @@ const typography = {
   secondary: Platform.select({
     ios: "Gotham Rounded",
     android: "gothamrounded",
-  }),
+  })
 }
 
 
