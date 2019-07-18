@@ -36,6 +36,16 @@ amplify init
 amplify push
 ```
 
+3. Start the app
+
+```sh
+react-native run-ios
+
+# or
+
+react-native run-android
+```
+
 ## To populate the database with your conference speakers
 
 1. Sign up in the app after following the previous steps
@@ -48,7 +58,7 @@ amplify console api
 
 3. Click on __Queries__ to open the GraphiQL Editor
 
-4. Create mutations with the following template:
+4. Create a new speaker with the following GraphQL mutation:
 
 ```sh
 mutation createTalk {
@@ -63,8 +73,52 @@ mutation createTalk {
     location: "Armory",
     speakerAvatar: "https://pbs.twimg.com/profile_images/875450414161772544/UjefWmmL_400x400.jpg"
   }) {
-    id name speakerBio speakerName speakerAvatar
-    location date time timeStamp
+    id name speakerBio speakerName speakerAvatar location date time timeStamp
+  }
+}
+```
+
+5. Query for all talks with the following GraphQL query:
+
+```graphql
+query listTalks {
+  listTalks {
+    items {
+      name
+      summary
+      speakerName
+      speakerBio
+      time
+      timeStamp
+      date
+      location
+      speakerAvatar
+    }
+  }
+}
+```
+
+6. Update a talk with the following GraphQL mutation:
+
+```graphql
+mutation updateTalk {
+  updateTalk(input: {
+    id: "<TALK_ID>"
+    name: "Performance in React Native & GraphQL"
+  }) {
+    id name
+  }
+}
+```
+
+7. Delete a talk with the following GraphQL mutation:
+
+```graphql
+mutation deleteTalk {
+  deleteTalk(input: {
+    id: "<TALK_ID>"
+  }) {
+    id
   }
 }
 ```
