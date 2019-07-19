@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/netinfo": "^4.1.1",
+    "@react-native-community/netinfo": "3.2.1",
     "aws-amplify": "^1.1.30",
     "aws-amplify-react-native": "^2.1.14",
     "date-fns": "^1.30.1",
