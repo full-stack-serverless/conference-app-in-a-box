@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
   input: {
     width: dimensions.width - 50,
     height: 50,
-    width,
     backgroundColor: '#fff',
     paddingHorizontal: 8,
     fontFamily: typography.primary,
