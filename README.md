@@ -133,7 +133,7 @@ mutation deleteTalk {
 
 This schema can be edited. If your event needs additional fields, you can update the backend by doing the following:
 
-1. Update the schema (located at amplify/backend/api/rnconfinabox/schema.graphql).
+1. Update the schema (located at __amplify/backend/api/rnconfinabox/schema.graphql__).
 
 2. Redeploy the back end:
 
