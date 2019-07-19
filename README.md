@@ -128,3 +128,15 @@ mutation deleteTalk {
 1. Open __src/theme.js__ and replace the _highlight_ & _primary_ colors.
 
 2. Replace __src/assets/logo.jpg__ with your logo.
+
+## To customize the GraphQL schema
+
+This schema can be edited. If your event needs additional fields, you can update the backend by doing the following:
+
+1. Update the schema (located at amplify/backend/api/rnconfinabox/schema.graphql).
+
+2. Redeploy the back end:
+
+```sh
+amplify push
+```
