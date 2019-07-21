@@ -33,6 +33,7 @@ npm install
 ```sh
 amplify init
 
+? Enter a name for the environment: dev (or whatever you would like to call this env)
 ? Choose your default editor: <YOUR_EDITOR_OF_CHOICE>
 ? Do you want to use an AWS profile? Y
 
