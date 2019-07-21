@@ -39,10 +39,6 @@ class Schedule extends Component {
   }
   render() {
     const { talks, date, loading } = this.state
-    const tab1 = talks.filter((t) => t.date === day1)
-    const tab2 = talks.filter((t) => t.date === day2)
-    let talkData = (this.state.date == day1 ? tab1 : tab2)
-      .sort((a, b) => new Date(parseInt(a.timeStamp)) - new Date(parseInt(b.timeStamp)))
     if (loading) {
       return (
         <View style={styles.loading}>
@@ -50,6 +46,9 @@ class Schedule extends Component {
         </View>
       )
     }
+    const talkData = talks
+      .filter(t => t.date === date)
+      .sort((a, b) => new Date(parseInt(a.timeStamp)) - new Date(parseInt(b.timeStamp)))
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -93,7 +92,7 @@ class Schedule extends Component {
             onPress={() => this.toggleDate(day1)}
           >
             <View style={[getButtonStyle(day1, date), styles.bottomButton]}>
-              <Text style={[styles.bottomButtonText]}>November 10</Text>
+              <Text style={[styles.bottomButtonText]}>{day1}</Text>
             </View>
           </TouchableHighlight>
           <TouchableHighlight
@@ -101,7 +100,7 @@ class Schedule extends Component {
             onPress={() => this.toggleDate(day2)}
           >
             <View style={[getButtonStyle(day2, date), styles.bottomButton]}>
-              <Text style={[styles.bottomButtonText]}>November 11</Text>
+              <Text style={[styles.bottomButtonText]}>{day2}</Text>
             </View>
           </TouchableHighlight>
         </View>
