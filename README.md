@@ -1,5 +1,7 @@
 # Conference App in a Box
 
+> This repo goes along with my Dev.to post titled ["Introducing Conference App in a Box"](https://dev.to/dabit3/introducing-conference-app-in-a-box-kgj)
+
 #### Deploy a full stack & cross-platform mobile app for your next event in minutes.
 
 🛠 Built with React Native, GraphQL, AWS Amplify, & AWS AppSync
