@@ -78,7 +78,7 @@ mutation createTalk {
     speakerBio: "Software Engineer at Facebook",
     time: "9:00 AM - 9:30 AM",
     timeStamp: "1573491600",
-    date: "November 11",
+    date: "November 10",
     location: "Armory",
     speakerAvatar: "https://pbs.twimg.com/profile_images/875450414161772544/UjefWmmL_400x400.jpg"
   }) {
