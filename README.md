@@ -6,7 +6,7 @@
 
 🛠 Built with React Native, GraphQL, AWS Amplify, & AWS AppSync
 
-> Follow me on [Twitter at @dabit3](https://twitter.com/dabit3) to keep up with my future projects as well as updates and features to this one!
+> Follow me on [Twitter at @dabit3](https://twitter.com/dabit3) to keep up with my future projects as well as updates and new features added to this one!
 
 ### Features
 
