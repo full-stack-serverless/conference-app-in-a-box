@@ -65,7 +65,7 @@ react-native run-android
 amplify console api
 ```
 
-3. Click on __Queries__ to open the GraphiQL Editor
+3. Click on __Queries__ to open the GraphiQL Editor. When prompted to "Login with User Pools", you can login with your new username and use the `aws_user_pools_web_client_id` located in __aws-exports.js__ for the ClientId.
 
 4. Create a new talk with the following GraphQL mutation:
 
