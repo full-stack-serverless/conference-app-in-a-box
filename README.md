@@ -25,23 +25,23 @@
 1. Clone the repo & install the dependencies
 
 ```sh
-git clone https://github.com/dabit3/conference-app-in-a-box.git
+~ git clone https://github.com/dabit3/conference-app-in-a-box.git
 
-cd conference-app-in-a-box
+~ cd conference-app-in-a-box
 
-npm install
+~ npm install
 ```
 
 2. Initialize and deploy the Amplify project
 
 ```sh
-amplify init
+~ amplify init
 
 ? Enter a name for the environment: dev (or whatever you would like to call this env)
 ? Choose your default editor: <YOUR_EDITOR_OF_CHOICE>
 ? Do you want to use an AWS profile? Y
 
-amplify push
+~ amplify push
 
 ? Are you sure you want to continue? Y
 ? Do you want to generate code for your newly created GraphQL API? N
@@ -52,11 +52,11 @@ amplify push
 3. Start the app
 
 ```sh
-react-native run-ios
+~ react-native run-ios
 
 # or
 
-react-native run-android
+~ react-native run-android
 ```
 
 ## To populate the database with your conference speakers
@@ -66,7 +66,7 @@ react-native run-android
 2. Open the AppSync console:
 
 ```sh
-amplify console api
+~ amplify console api
 ```
 
 3. Click on __Queries__ to open the GraphiQL Editor. When prompted to "Login with User Pools", you can login with your new username and use the `aws_user_pools_web_client_id` located in __aws-exports.js__ for the ClientId.
