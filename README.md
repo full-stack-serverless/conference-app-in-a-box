@@ -151,5 +151,5 @@ This schema can be edited. If your event needs additional fields, you can update
 2. Redeploy the back end:
 
 ```sh
-amplify push
+~ amplify push
 ```
