@@ -33,7 +33,15 @@ npm install
 ```sh
 amplify init
 
+? Choose your default editor: <YOUR_EDITOR_OF_CHOICE>
+? Do you want to use an AWS profile? Y
+
 amplify push
+
+? Are you sure you want to continue? Y
+? Do you want to generate code for your newly created GraphQL API? N
+
+> We already have the GraphQL code generated for this project, so generating it here is not necessary.
 ```
 
 3. Start the app
