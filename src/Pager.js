@@ -6,8 +6,6 @@ import Talk from './Talk'
 import Discussion from './Discussion'
 import { typography, colors, dimensions } from './theme'
 
-const { width } = Dimensions.get('window')
-
 export default class Pager extends Component {
   static navigationOptions = (props) => ({
     title: props.navigation.state.params.name,
@@ -27,8 +25,7 @@ export default class Pager extends Component {
     this.setState({ index })
   }
 
-  _renderItem = ({item, index}) => {
-    console.log('index:', index)
+  _renderItem = ({index}) => {
     if (index === 0) return <Talk {...this.props} />
     return (
         <Discussion {...this.props} />
@@ -66,8 +63,8 @@ export default class Pager extends Component {
               ref={(c) => { this._carousel = c; }}
               data={this.state.entries}
               renderItem={this._renderItem}
-              sliderWidth={width}
-              itemWidth={width}
+              sliderWidth={dimensions.width}
+              itemWidth={dimensions.width}
               onSnapToItem={this.onSnapToItem}
             />
           </View>
