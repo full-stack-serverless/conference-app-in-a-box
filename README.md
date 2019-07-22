@@ -24,12 +24,14 @@ This is the Expo version. To view the React Native CLI version, click [here](htt
 
 ## Deploy the back end and run the app
 
-1. Clone the repo & install the dependencies
+1. Clone the repo, check out the Expo branch, & install the dependencies
 
 ```sh
 ~ git clone https://github.com/dabit3/conference-app-in-a-box.git
 
 ~ cd conference-app-in-a-box
+
+~ git checkout expo
 
 ~ npm install
 ```
