@@ -21,14 +21,10 @@ const colors = {
 }
 
 const typography = {
-  primary: Platform.select({
-    ios: "Gotham Rounded",
-    android: "gothamrounded",
-  }),
-  secondary: Platform.select({
-    ios: "Gotham Rounded",
-    android: "gothamrounded",
-  })
+  primary: "Gotham Rounded",
+  secondary: "Gotham Rounded",
+  medium: "GothamRnd Medium",
+  bold: "Gotham Bold"
 }
 
 

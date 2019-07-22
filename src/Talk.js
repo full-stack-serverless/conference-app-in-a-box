@@ -41,29 +41,25 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     marginTop: 15,
-    fontWeight: '400',
     color: colors.primaryText,
-    fontFamily: typography.primary,
+    fontFamily: typography.medium
   },
   name: {
     fontSize: 26,
-    fontWeight: '500',
     marginBottom: 20,
     marginTop: 20,
     color: colors.highlight,
-    fontFamily: typography.primary,
+    fontFamily: typography.medium,
   },
   speakerName: {
     marginBottom: 5,
-    fontWeight: '500',
     fontSize: 16,
     color: colors.primaryText,
-    fontFamily: typography.primary
+    fontFamily: typography.medium
   },
   time: {
     color: colors.highlight,
-    fontWeight: '500',
-    fontFamily: typography.primary,
+    fontFamily: typography.medium,
   },
   summary: {
     marginTop: 4,

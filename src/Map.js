@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   addressHeading: {
     fontSize: 18,
-    fontWeight: '500',
+    fontFamily: typography.medium,
     marginBottom: 5,
     color: colors.highlight
   },

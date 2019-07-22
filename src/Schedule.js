@@ -202,8 +202,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   name: {
-    fontWeight: "bold",
-    fontFamily: typography.primary,
+    fontFamily: typography.medium,
     fontSize: 17,
     marginBottom: 5,
     color: colors.primaryText,

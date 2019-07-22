@@ -1,4 +1,6 @@
-# Conference App in a Box
+# Conference App in a Box - Expo
+
+This is the Expo version. To view the React Native CLI version, click [here](https://github.com/dabit3/conference-app-in-a-box).
 
 > This repo goes along with my Dev.to post titled ["Introducing Conference App in a Box"](https://dev.to/dabit3/introducing-conference-app-in-a-box-kgj)
 
@@ -52,11 +54,7 @@
 3. Start the app
 
 ```sh
-~ react-native run-ios
-
-# or
-
-~ react-native run-android
+~ expo start
 ```
 
 ## To populate the database with your conference speakers
