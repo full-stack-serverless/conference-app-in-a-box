@@ -40,3 +40,8 @@ type ModelCommentConnection {
 type Query {
   listCommentsByTalkId(talkId: ID!): ModelCommentConnection
 }
+
+type Subscription {
+  onCreateCommentWithId(talkId: ID!): Comment
+		@aws_subscribe(mutations: ["createComment"])
+}

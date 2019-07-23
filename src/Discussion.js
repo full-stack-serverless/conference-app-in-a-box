@@ -59,11 +59,11 @@ export default class Discussion extends Component {
     )
     .subscribe({
       next: data => {
-        const { value: { data: { onCreateComment }}} = data
-        if (onCreateComment.deviceId === DEVICE_ID) return
+        const { value: { data: { onCreateCommentWithId }}} = data
+        if (onCreateCommentWithId.deviceId === DEVICE_ID) return
         const comments = [
           ...this.state.comments,
-          onCreateComment
+          onCreateCommentWithId
         ]
         this.setState({ comments })
       }
