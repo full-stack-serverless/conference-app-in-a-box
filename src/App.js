@@ -10,7 +10,7 @@ import Schedule from './Schedule'
 import Profile from './Profile'
 import Map from './Map'
 
-import { colors } from './theme'
+import { colors, logo } from './theme'
 
 const TabNavigator = createBottomTabNavigator({
   Schedule: {
@@ -106,7 +106,7 @@ const Logo = () => (
     <Image
       style={styles.logo}
       resizeMode='contain'
-      source={require('./assets/logo.jpg')}
+      source={logo}
     />
   </View>
 )
