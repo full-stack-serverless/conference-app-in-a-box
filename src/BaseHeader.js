@@ -5,8 +5,7 @@ import {
   StyleSheet
 } from 'react-native'
 
-import logo from './assets/logo.jpg'
-import { colors } from './theme'
+import { colors, logo } from './theme'
 
 class BaseHeader extends React.Component {
   render() {
