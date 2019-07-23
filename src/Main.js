@@ -67,11 +67,11 @@ const theme = {
   ...AmplifyTheme,
   button: {
     ...AmplifyTheme.button,
-    backgroundColor: colors.primary2
+    backgroundColor: colors.primaryLight
   },
   sectionFooterLink: {
     ...AmplifyTheme.sectionFooterLink,
-    color: colors.primary2
+    color: colors.primaryLight
   },
   buttonDisabled: {
     ...AmplifyTheme.buttonDisabled,

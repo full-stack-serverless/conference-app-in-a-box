@@ -73,7 +73,7 @@ export default class Pager extends Component {
 }
 
 function getButtonStyle(index, currentIndex) {
-  const backgroundColor = Number(index) === currentIndex ? colors.primary2 : colors.primary
+  const backgroundColor = Number(index) === currentIndex ? colors.primaryLight : colors.primary
   const borderBottomColor = Number(index) === currentIndex ? colors.highlight : colors.primary
   return { backgroundColor, borderBottomColor }
 }

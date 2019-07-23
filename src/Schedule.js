@@ -108,7 +108,7 @@ class Schedule extends Component {
 }
 
 function getButtonStyle(day, currentDay) {
-  const backgroundColor = day === currentDay ? colors.primary2 : colors.primary
+  const backgroundColor = day === currentDay ? colors.primaryLight : colors.primary
   const borderTopColor = day === currentDay ? colors.highlight : colors.primary
   return { backgroundColor, borderTopColor }
 }
@@ -120,7 +120,7 @@ const ScheduleNav = createStackNavigator({
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: colors.primary,
-      borderBottomColor: colors.primary2,
+      borderBottomColor: colors.primaryLight,
       borderBottomWidth: 1
     },
   }
@@ -166,11 +166,11 @@ const styles = StyleSheet.create({
     height: 35
   },
   container: {
-    backgroundColor: colors.primary2,
+    backgroundColor: colors.primaryLight,
     flex: 1
   },
   loading: {
-    backgroundColor: colors.primary2,
+    backgroundColor: colors.primaryLight,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
