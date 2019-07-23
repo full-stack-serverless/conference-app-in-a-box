@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {AppState, KeyboardAvoidingView, ScrollView, TextInput, StyleSheet, Text, View , Dimensions} from 'react-native';
 import { API, graphqlOperation, Auth } from 'aws-amplify'
 import DeviceInfo from 'react-native-device-info'
-import NetInfo from "@react-native-community/netinfo"
 
 import { listCommentsByTalkId } from './graphql/queries'
 import { onCreateComment as OnCreateComment } from './graphql/subscriptions'
@@ -16,47 +15,39 @@ export default class Discussion extends Component {
   static navigationOptions = () => ({
     title: "Discussion"
   })
-  state = { comments: [], message: '' }
+  state = { comments: [], message: '', subscribed: false }
   subscription = {}
-  netInfo = {}
   async componentDidMount() {
     this.subscribe()
     AppState.addEventListener('change', this.handleAppStateChange)
-    this.netInfo = NetInfo.addEventListener(state => {
-      if (state.isConnected) {
-        this.subscribe()
-      } else {
-        this.unsubscribe()
-      }
-    });
+
     const { navigation: { state: { params }}} = this.props
     try {
       const commentData = await API.graphql(
         graphqlOperation(listCommentsByTalkId, {
         talkId: params.id
      }))
-     console.log('commentData: ', commentData)
-      const { data: { listCommentsByTalkId: { items }}} = commentData
-      this.setState({ comments: items })
+    const { data: { listCommentsByTalkId: { items }}} = commentData
+    this.setState({ comments: items })
     } catch (err) {
       console.log('error fetching comments: ', err)
     }
-
     try {
       const { username } = await Auth.currentAuthenticatedUser()
       this.setState({ username })
     } catch (err) { console.log('error fetching user info: ', err)}
   }
   handleAppStateChange = (appState) => {
-    console.log('appState: ', appState)
     if (appState === 'active') {
       this.subscribe()
     }
     if (appState === 'background') {
+      this.setState({ subscribed: false })
       this.unsubscribe()
     }
   }
   subscribe() {
+    if (this.state.subscribed) return
     const { navigation: { state: { params }}} = this.props
     this.subscription = API.graphql(
       graphqlOperation(OnCreateComment, { talkId: params.id })
@@ -72,13 +63,15 @@ export default class Discussion extends Component {
         this.setState({ comments })
       }
     })
+    this.setState({ subscribed: true })
   }
   unsubscribe = () => {
     this.subscription.unsubscribe()
-    this.netInfo()
+    this.setState({ subscribed: false })
   }
   componentWillUnmount() {
     this.unsubscribe()
+    AppState.removeEventListener('change', this.handleAppStateChange)
   }
   createMessage = async () => {
     if (!this.state.message) return
@@ -152,7 +145,6 @@ export default class Discussion extends Component {
 
 const styles = StyleSheet.create({
   input: {
-    width: dimensions.width - 50,
     height: 50,
     width,
     backgroundColor: '#fff',
