@@ -74,7 +74,7 @@ export const onDeleteTalk = `subscription OnDeleteTalk {
 }
 `;
 export const onCreateComment = `subscription onCreateCommentWithId($talkId: ID!) {
-  onCreateComment(talkId: $talkId) {
+  onCreateCommentWithId(talkId: $talkId) {
     id
     talkId
     talk {
