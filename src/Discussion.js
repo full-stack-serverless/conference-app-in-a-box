@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 5,
     backgroundColor: colors.primaryDark,
-    borderBottomColor: '#25223e',
+    borderBottomColor: colors.primaryLight,
     borderBottomWidth: 1
   }
 });
