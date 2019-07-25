@@ -17,6 +17,7 @@ This is the Expo version. To view the React Native CLI version, click [here](htt
 👮‍♂️ Authentication & Profile view   
 🔥 Serverless back end   
 🚀 GraphQL   
+💻 Deploy back end in minutes
 
 ![](./src/assets/confapps1.jpg)
 ![](./src/assets/confapps2.jpg)
