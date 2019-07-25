@@ -16,6 +16,7 @@ export default class Discussion extends Component {
     title: "Discussion"
   })
   state = { comments: [], message: '', subscribed: false }
+  scroller = React.createRef()
   subscription = {}
   async componentDidMount() {
     this.subscribe()
@@ -26,10 +27,14 @@ export default class Discussion extends Component {
       const commentData = await API.graphql(
         graphqlOperation(listCommentsByTalkId, {
         talkId: params.id
-     }))
-     console.log('commentData: ', commentData)
+      }))
       const { data: { listCommentsByTalkId: { items }}} = commentData
-      this.setState({ comments: items })
+      const comments = items.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+      this.setState({ comments }, () => {
+        setTimeout(() => {
+          this.scroller.current.scrollToEnd({ animated: false })
+        }, 50)
+      })
     } catch (err) {
       console.log('error fetching comments: ', err)
     }
@@ -66,6 +71,9 @@ export default class Discussion extends Component {
           onCreateCommentWithId
         ]
         this.setState({ comments })
+        setTimeout(() => {
+          this.scroller.current.scrollToEnd()
+        }, 50)
       }
     })
     this.setState({ subscribed: true })
@@ -88,6 +96,9 @@ export default class Discussion extends Component {
     const { message, username } = this.state
     const comments = [...this.state.comments, { message, createdBy: this.state.username }]
     this.setState({ comments, message: '' })
+    setTimeout(() => {
+      this.scroller.current.scrollToEnd()
+    }, 50)
     try {
       await API.graphql(graphqlOperation(createComment, {
         input: {
@@ -112,7 +123,10 @@ export default class Discussion extends Component {
       behavior="padding"
       style={styles.container}>
         <View style={styles.scrollViewContainer}>
-          <ScrollView contentContainerStyle={styles.scrollView}>
+          <ScrollView
+            contentContainerStyle={styles.scrollView}
+            ref={this.scroller}
+          >
             {
               !this.state.comments.length && (
                 <View style={styles.comment}>
@@ -168,7 +182,6 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     flex: 1,
-    paddingBottom: 50
   },
   time: {
     color: 'rgba(0, 0, 0, .5)'
