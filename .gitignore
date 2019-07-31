@@ -68,3 +68,4 @@ awsconfiguration.json
 *.jsbundle
 
 .expo
+web-build
