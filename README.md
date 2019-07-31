@@ -12,11 +12,11 @@ This is the Expo version. To view the React Native CLI version, click [here](htt
 
 ### Features
 
-⚡️ Real-time chat   
-👾 Themeable & customizable   
-👮‍♂️ Authentication & Profile view   
-🔥 Serverless back end   
-🚀 GraphQL   
+⚡️ Real-time chat  
+👾 Themeable & customizable  
+👮‍♂️ Authentication & Profile view  
+🔥 Serverless back end  
+🚀 GraphQL  
 💻 Deploy back end in minutes
 
 ![](./src/assets/confapps1.jpg)
@@ -57,7 +57,7 @@ This is the Expo version. To view the React Native CLI version, click [here](htt
 3. Start the app
 
 ```sh
-~ expo start
+~ npx expo start # or yarn expo start
 ```
 
 ## To populate the database with your conference speakers
@@ -70,24 +70,34 @@ This is the Expo version. To view the React Native CLI version, click [here](htt
 ~ amplify console api
 ```
 
-3. Click on __Queries__ to open the GraphiQL Editor. When prompted to "Login with User Pools", you can login with your new username and use the `aws_user_pools_web_client_id` located in __aws-exports.js__ for the ClientId.
+3. Click on **Queries** to open the GraphiQL Editor. When prompted to "Login with User Pools", you can login with your new username and use the `aws_user_pools_web_client_id` located in **aws-exports.js** for the ClientId.
 
 4. Create a new talk with the following GraphQL mutation:
 
 ```graphql
 mutation createTalk {
-  createTalk(input: {
-    name: "Performance In React Native",
-    summary: "In this talk, we will look at the various tips and tricks for taking full advantage of React Native and using the performance attributes of the new architecture.",
-    speakerName: "Ram Narasimhan",
-    speakerBio: "Software Engineer at Facebook",
-    time: "9:00 AM - 9:30 AM",
-    timeStamp: "1573491600",
-    date: "November 10",
-    location: "Armory",
-    speakerAvatar: "https://pbs.twimg.com/profile_images/875450414161772544/UjefWmmL_400x400.jpg"
-  }) {
-    id name speakerBio speakerName speakerAvatar location date time timeStamp
+  createTalk(
+    input: {
+      name: "Performance In React Native"
+      summary: "In this talk, we will look at the various tips and tricks for taking full advantage of React Native and using the performance attributes of the new architecture."
+      speakerName: "Ram Narasimhan"
+      speakerBio: "Software Engineer at Facebook"
+      time: "9:00 AM - 9:30 AM"
+      timeStamp: "1573491600"
+      date: "November 10"
+      location: "Armory"
+      speakerAvatar: "https://pbs.twimg.com/profile_images/875450414161772544/UjefWmmL_400x400.jpg"
+    }
+  ) {
+    id
+    name
+    speakerBio
+    speakerName
+    speakerAvatar
+    location
+    date
+    time
+    timeStamp
   }
 }
 ```
@@ -116,11 +126,11 @@ query listTalks {
 
 ```graphql
 mutation updateTalk {
-  updateTalk(input: {
-    id: "<TALK_ID>"
-    name: "Performance in React Native & GraphQL"
-  }) {
-    id name
+  updateTalk(
+    input: { id: "<TALK_ID>", name: "Performance in React Native & GraphQL" }
+  ) {
+    id
+    name
   }
 }
 ```
@@ -129,9 +139,7 @@ mutation updateTalk {
 
 ```graphql
 mutation deleteTalk {
-  deleteTalk(input: {
-    id: "<TALK_ID>"
-  }) {
+  deleteTalk(input: { id: "<TALK_ID>" }) {
     id
   }
 }
@@ -139,15 +147,15 @@ mutation deleteTalk {
 
 ## To customize with your theme and logo
 
-1. Open __src/theme.js__ and replace the _highlight_ & _primary_ colors.
+1. Open **src/theme.js** and replace the _highlight_ & _primary_ colors.
 
-2. Replace __src/assets/logo.jpg__ with your logo.
+2. Replace **src/assets/logo.jpg** with your logo.
 
 ## To customize the GraphQL schema
 
 This schema can be edited. If your event needs additional fields, you can update the backend by doing the following:
 
-1. Update the schema (located at __amplify/backend/api/rnconfinabox/schema.graphql__).
+1. Update the schema (located at **amplify/backend/api/rnconfinabox/schema.graphql**).
 
 2. Redeploy the back end:
 
