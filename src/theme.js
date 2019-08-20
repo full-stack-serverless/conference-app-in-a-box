@@ -1,5 +1,6 @@
 import { Platform, Dimensions } from 'react-native'
 const logo = require('./assets/logo.jpg')
+const logoLight = require('./assets/logoLight.png')
 
 const dimensions = Dimensions.get('window')
 
@@ -37,5 +38,6 @@ export {
   colors,
   typography,
   dimensions,
-  logo
+  logo,
+  logoLight
 }
