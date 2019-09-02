@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ScrollView, TouchableHighlight, Linking, StyleSheet, Text, View} from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView from 'react-native-maps';
 import { colors, typography, dimensions } from './theme'
 
 import BaseHeader from './BaseHeader'
@@ -26,18 +26,18 @@ export default class Map extends Component {
                   longitudeDelta: 0.0421,
                 }}
               >
-                <Marker
+                <MapView.Marker
                   coordinate={{
                     latitude: 37.78825,
-                    longitude: -122.4324,
+                    longitude: -122.4324
                   }}
                 >
                   <View>
                     <Text style={{
-                      fontSize: 24
-                    }}>🚀</Text>
+                        fontSize: 24
+                      }}>🚀</Text>
                   </View>
-                </Marker>
+                </MapView.Marker>
               </MapView>
               <TouchableHighlight
                 onPress={this.openMap}
