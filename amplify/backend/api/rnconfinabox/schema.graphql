@@ -11,7 +11,7 @@ type Talk @model {
   twitter: String
   github: String
   speakerAvatar: String
-  comments: [Comment] @connection(name: "TalkComments")
+  comments: [Comment] @connection(name: "TalkComments", keyField: "talkId")
 }
 
 type Comment @model {
