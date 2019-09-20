@@ -4,6 +4,8 @@ This is the React Native CLI version. To view the Expo version, click [here](htt
 
 > This repo goes along with my Dev.to post titled ["Introducing Conference App in a Box"](https://dev.to/dabit3/introducing-conference-app-in-a-box-kgj)
 
+For a full walkthrough of this project and how to deploy and theme it, check out [this video](https://www.youtube.com/watch?v=9ysiXDdmc9c).
+
 #### Deploy a full stack & cross-platform mobile app for your next event in minutes.
 
 🛠 Built with React Native, GraphQL, AWS Amplify, & AWS AppSync
