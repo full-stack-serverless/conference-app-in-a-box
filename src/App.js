@@ -20,7 +20,7 @@ function TabNavigator() {
     <Tab.Navigator
       tabBarOptions={{
         activeTintColor: colors.highlight,
-        inactiveTintColor: '#fafafa',
+        inactiveTintColor: colors.inactive,
         style: { backgroundColor: colors.primary }
       }}
       screenOptions={screenProps => {
