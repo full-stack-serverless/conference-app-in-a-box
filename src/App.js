@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import { Hub, Auth } from 'aws-amplify'
 import { withAuthenticator } from 'aws-amplify-react-native'
 import AmplifyTheme from 'aws-amplify-react-native/src/AmplifyTheme'
@@ -12,37 +13,39 @@ import Map from './Map'
 
 import { colors, logoLight } from './theme'
 
-const TabNavigator = createBottomTabNavigator({
-  Schedule: {
-    screen: Schedule
-  },
-  Profile: {
-    screen: Profile
-  },
-  Map: {
-    screen: Map,
-  }
-}, {
-  tabBarOptions: {
-    activeTintColor: colors.highlight,
-    inactiveTintColor: '#fafafa',
-    style: {
-      backgroundColor: colors.primary
-    }
-  },
-  defaultNavigationOptions: ({ navigation }) => ({
-    tabBarIcon: ({ tintColor }) => {
-      const { routeName } = navigation.state
-      if (routeName === 'Schedule') {
-        return <Icon color={tintColor} size={20} name='calendar' />
-      }
-      if (routeName === 'Map') {
-        return <Icon color={tintColor} size={20} name='map' />
-      }
-      return <Icon color={tintColor} size={20} name='user' />
-    }
-  })
-})
+const Tab = createBottomTabNavigator();
+
+function TabNavigator() {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: colors.highlight,
+        inactiveTintColor: '#fafafa',
+        style: { backgroundColor: colors.primary }
+      }}
+      screenOptions={screenProps => {
+        const { route: { name } } = screenProps
+        return {
+          tabBarIcon: (props) => {
+            console.log('props: ', props)
+            const { color } = props
+            if (name === 'Schedule') {
+              return <Icon color={color} size={20} name='calendar' />
+            }
+            if (name === 'Map') {
+              return <Icon color={color} size={20} name='map' />
+            }
+            return <Icon color={color} size={20} name='user' />
+          }
+        }
+      }}
+    >
+      <Tab.Screen name="Schedule" component={Schedule} />
+      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Map" component={Map} />
+    </Tab.Navigator>
+  );
+}
 
 class TabNavWithProps extends React.Component {
   static router = TabNavigator.router
@@ -53,7 +56,10 @@ class TabNavWithProps extends React.Component {
   }
 }
 
-const App = createAppContainer(TabNavWithProps)
+const App = (props) => (
+  <NavigationContainer>
+    <TabNavWithProps {...props} />
+  </NavigationContainer>)
 
 const theme = {
   ...AmplifyTheme,

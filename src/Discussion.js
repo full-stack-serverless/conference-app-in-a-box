@@ -8,7 +8,7 @@ import { onCreateComment as OnCreateComment } from './graphql/subscriptions'
 import { createComment } from './graphql/mutations'
 import { colors, dimensions, typography } from './theme'
 
-const DEVICE_ID = DeviceInfo.getUniqueID()
+const DEVICE_ID = DeviceInfo.getUniqueId()
 const { width } = Dimensions.get('window')
 
 export default class Discussion extends Component {
@@ -21,8 +21,7 @@ export default class Discussion extends Component {
   async componentDidMount() {
     this.subscribe()
     AppState.addEventListener('change', this.handleAppStateChange)
-
-    const { navigation: { state: { params }}} = this.props
+    const { route: { params }} = this.props
     try {
       const commentData = await API.graphql(
         graphqlOperation(listCommentsByTalkId, {
@@ -55,7 +54,7 @@ export default class Discussion extends Component {
   }
   subscribe() {
     if (this.state.subscribed) return
-    const { navigation: { state: { params }}} = this.props
+    const { route: { params }} = this.props
     this.subscription = API.graphql(
       graphqlOperation(OnCreateComment, { talkId: params.id })
     )
@@ -85,7 +84,7 @@ export default class Discussion extends Component {
   }
   createMessage = async () => {
     if (!this.state.message) return
-    const { navigation: { state: { params }}} = this.props
+    const { route: { params }} = this.props
     const { message, username } = this.state
     const comments = [...this.state.comments, { message, createdBy: this.state.username }]
     this.setState({ comments, message: '' })

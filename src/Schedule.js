@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import {ActivityIndicator, Image, ScrollView, TouchableHighlight, TouchableOpacity, StyleSheet, Text, View} from 'react-native'
-import { createStackNavigator } from 'react-navigation'
+import {ActivityIndicator, Image, ScrollView, TouchableHighlight, TouchableOpacity, StyleSheet, SafeAreaView, Text, View} from 'react-native'
+import { createStackNavigator } from '@react-navigation/stack';
 import Pager from './Pager'
+import BaseHeader from './BaseHeader'
 import { colors, typography, dimensions, logo } from './theme'
 
 import { API, graphqlOperation } from 'aws-amplify'
@@ -11,13 +12,6 @@ const day1 = 'November 10'
 const day2 = 'November 11'
 
 class Schedule extends Component {
-  static navigationOptions = props => ({
-    headerLeft: <Image
-        source={logo}
-        resizeMode='contain'
-        style={styles.logo}
-      />
-  })
   state = {
     talks: [],
     date: day1,
@@ -48,61 +42,64 @@ class Schedule extends Component {
       .filter(t => t.date === date)
       .sort((a, b) => new Date(parseInt(a.timeStamp)) - new Date(parseInt(b.timeStamp)))
     return (
-      <View style={styles.container}>
-        <ScrollView>
-          <View style={styles.listContainer}>
-          {
-            talkData.map((talk, i) => (
-              <TouchableOpacity
-                key={i} 
-                onPress={
-                  () => this.props.navigation.push('Talk', talk)
-                }
-              >
-                <View style={styles.talk}>
-                  <View style={styles.speakerContainer}>
-                    <View style={styles.avatarContainer}>
-                      <Image
-                        style={styles.avatar}
-                        resizeMode='cover'
-                        source={{ uri: talk.speakerAvatar }}
-                      />
+      <SafeAreaView style={styles.outerContainer}>
+        <BaseHeader />
+        <View style={styles.container}>
+          <ScrollView>
+            <View style={styles.listContainer}>
+            {
+              talkData.map((talk, i) => (
+                <TouchableOpacity
+                  key={i} 
+                  onPress={
+                    () => this.props.navigation.push('Talk', talk)
+                  }
+                >
+                  <View style={styles.talk}>
+                    <View style={styles.speakerContainer}>
+                      <View style={styles.avatarContainer}>
+                        <Image
+                          style={styles.avatar}
+                          resizeMode='cover'
+                          source={{ uri: talk.speakerAvatar }}
+                        />
+                      </View>
+                      <View style={styles.infoContainer}>
+                        <Text
+                          style={styles.name}
+                        >{talk.name}</Text>
+                        <Text style={styles.speakerName}>{talk.speakerName}</Text>
+                      </View>
                     </View>
-                    <View style={styles.infoContainer}>
-                      <Text
-                        style={styles.name}
-                      >{talk.name}</Text>
-                      <Text style={styles.speakerName}>{talk.speakerName}</Text>
+                    <View style={styles.timeContainer}>
+                      <Text style={styles.talkTime}>{talk.time}</Text>
                     </View>
                   </View>
-                  <View style={styles.timeContainer}>
-                    <Text style={styles.talkTime}>{talk.time}</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            ))
-          }
+                </TouchableOpacity>
+              ))
+            }
+            </View>
+          </ScrollView>
+          <View style={styles.tabBottomContainer}>
+            <TouchableHighlight
+              underlayColor={colors.primaryDark}
+              onPress={() => this.toggleDate(day1)}
+            >
+              <View style={[getButtonStyle(day1, date), styles.bottomButton]}>
+                <Text style={[styles.bottomButtonText]}>{day1}</Text>
+              </View>
+            </TouchableHighlight>
+            <TouchableHighlight
+              underlayColor={colors.primaryDark}
+              onPress={() => this.toggleDate(day2)}
+            >
+              <View style={[getButtonStyle(day2, date), styles.bottomButton]}>
+                <Text style={[styles.bottomButtonText]}>{day2}</Text>
+              </View>
+            </TouchableHighlight>
           </View>
-        </ScrollView>
-        <View style={styles.tabBottomContainer}>
-          <TouchableHighlight
-            underlayColor={colors.primaryDark}
-            onPress={() => this.toggleDate(day1)}
-          >
-            <View style={[getButtonStyle(day1, date), styles.bottomButton]}>
-              <Text style={[styles.bottomButtonText]}>{day1}</Text>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            underlayColor={colors.primaryDark}
-            onPress={() => this.toggleDate(day2)}
-          >
-            <View style={[getButtonStyle(day2, date), styles.bottomButton]}>
-              <Text style={[styles.bottomButtonText]}>{day2}</Text>
-            </View>
-          </TouchableHighlight>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -113,18 +110,44 @@ function getButtonStyle(day, currentDay) {
   return { backgroundColor, borderTopColor }
 }
 
-const ScheduleNav = createStackNavigator({
-  Schedule: { screen: Schedule },
-  Talk: { screen: Pager }
-}, {
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: colors.primary,
-      borderBottomColor: colors.primaryLight,
-      borderBottomWidth: 1
-    },
-  }
-})
+const Stack = createStackNavigator();
+
+function ScheduleNav() {
+  return (
+    <Stack.Navigator      
+      screenOptions={{
+        headerStyle: {
+          shadowRadius: 0,
+          shadowOffset: {
+              height: 0,
+          },
+          backgroundColor: colors.primary,
+        }
+      }}>
+      <Stack.Screen
+        name="Schedule"
+        component={Schedule}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Talk"
+        component={Pager}
+        options={props => {
+          const { route: { params: { name }} } = props
+          return {
+            title: name,
+            headerTintColor: colors.highlight,
+            headerTitleStyle: {
+              color: 'white'
+            }
+          }
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default ScheduleNav
 
@@ -146,8 +169,8 @@ const styles = StyleSheet.create({
     width: dimensions.width,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderTopColor: "rgba(255, 255, 255, .2)",
-    borderBottomColor: "rgba(255, 255, 255, .2)",
+    borderTopColor: "rgba(255, 255, 255, .1)",
+    borderBottomColor: "rgba(255, 255, 255, .1)",
     left: 0, 
     bottom: -1
   },
@@ -164,6 +187,10 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     width: 120,
     height: 35
+  },
+  outerContainer: {
+    flex: 1,
+    backgroundColor: colors.primary
   },
   container: {
     backgroundColor: colors.primaryLight,

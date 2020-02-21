@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, TouchableHighlight, Linking, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, TouchableHighlight, Linking, StyleSheet, Text, View} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { colors, typography, dimensions } from './theme'
 
@@ -12,8 +12,9 @@ export default class Map extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.outerContainer}>
         <BaseHeader />
+        <View style={styles.container}>
         <View style={styles.mapContainer}>
           <ScrollView>
             <View style={styles.mapView}>
@@ -52,7 +53,8 @@ export default class Map extends Component {
             </View>
           </ScrollView>
         </View>
-      </View>
+        </View>
+      </SafeAreaView>
     );
   }
 }
@@ -77,6 +79,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginBottom: 5,
     color: colors.highlight
+  },
+  outerContainer: {
+    flex: 1,
+    backgroundColor: colors.primary
   },
   container: {
     flex: 1,

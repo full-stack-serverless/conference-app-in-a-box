@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TouchableHighlight, TextInput, StyleSheet, Text, View} from 'react-native';
+import {TouchableHighlight, SafeAreaView, TextInput, StyleSheet, Text, View} from 'react-native';
 import { Auth } from 'aws-amplify'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors, typography, dimensions } from './theme'
@@ -35,49 +35,51 @@ export default class Profile extends Component {
   render() {
     const buttonText = this.state.isEditing ? 'Save' : 'Edit Profile'
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.outerContainer}>
         <BaseHeader />
-        <View style={styles.profileContainer}>
-          <Text style={styles.username}>{this.state.username}</Text>
-          <Text style={styles.email}>{this.state.email}</Text>
-          {
-            !this.state.isEditing ? (
-              <Social
-                twitter={this.state.twitter}
-                github={this.state.github}
-              />
-            ) : (
-              <Form
-                onChange={this.onChange}
-                twitter={this.state.twitter}
-                github={this.state.github}
-              />
-            )
-          }
-          <View style={styles.buttonContainer}>
-            <TouchableHighlight
-              onPress={this.toggleForm}
-              underlayColor='transparent'
-            >
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  {buttonText}
-                </Text>
-              </View>
-            </TouchableHighlight>
-            <TouchableHighlight
-              onPress={this.signOut}
-              underlayColor='transparent'
-            >
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  Sign out
-                </Text>
-              </View>
-            </TouchableHighlight>
+        <View style={styles.container}>
+          <View style={styles.profileContainer}>
+            <Text style={styles.username}>{this.state.username}</Text>
+            <Text style={styles.email}>{this.state.email}</Text>
+            {
+              !this.state.isEditing ? (
+                <Social
+                  twitter={this.state.twitter}
+                  github={this.state.github}
+                />
+              ) : (
+                <Form
+                  onChange={this.onChange}
+                  twitter={this.state.twitter}
+                  github={this.state.github}
+                />
+              )
+            }
+            <View style={styles.buttonContainer}>
+              <TouchableHighlight
+                onPress={this.toggleForm}
+                underlayColor='transparent'
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    {buttonText}
+                  </Text>
+                </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                onPress={this.signOut}
+                underlayColor='transparent'
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    Sign out
+                  </Text>
+                </View>
+              </TouchableHighlight>
+            </View>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -170,6 +172,10 @@ const styles = StyleSheet.create({
   },
   gitHub: {
     marginTop: 15
+  },
+  outerContainer: {
+    flex: 1,
+    backgroundColor: colors.primary
   },
   container: {
     flex: 1,

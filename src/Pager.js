@@ -7,11 +7,6 @@ import Discussion from './Discussion'
 import { typography, colors, dimensions } from './theme'
 
 export default class Pager extends Component {
-  static navigationOptions = (props) => ({
-    title: props.navigation.state.params.name,
-    headerTintColor: colors.highlight
-  })
-
   state = {
     index: 0,
     entries: [0, 1]
