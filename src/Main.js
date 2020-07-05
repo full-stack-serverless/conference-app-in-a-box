@@ -5,7 +5,7 @@ import { Hub, Auth } from 'aws-amplify'
 import { withAuthenticator } from 'aws-amplify-react-native'
 import AmplifyTheme from 'aws-amplify-react-native/src/AmplifyTheme'
 import { FontAwesome } from '@expo/vector-icons'
-import { Font } from 'expo'
+import * as Font  from 'expo-font';
 
 import Schedule from './Schedule'
 import Profile from './Profile'
@@ -50,7 +50,9 @@ class TabNavWithProps extends React.Component {
     Font.loadAsync({
       'Gotham Rounded': require('./assets/fonts/GothamRnd-Light.otf'),
       'GothamRnd Medium': require('./assets/fonts/GothamRnd-Medium.otf'),
-      'Gotham Bold': require('./assets/fonts/GothamRnd-Bold.otf')
+      'Gotham Bold': require('./assets/fonts/GothamRnd-Bold.otf'),
+      'Ionicons': require('./assets/fonts/GothamRnd-Bold.otf')
+
     });
   }
   static router = TabNavigator.router
